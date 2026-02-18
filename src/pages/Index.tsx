@@ -1,13 +1,32 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Header from "@/components/landing/Header";
+import HeroSection from "@/components/landing/HeroSection";
+import AboutSection from "@/components/landing/AboutSection";
+import DifferentialsSection from "@/components/landing/DifferentialsSection";
+import SocialProofSection from "@/components/landing/SocialProofSection";
+import CoverageSection from "@/components/landing/CoverageSection";
+import GallerySection from "@/components/landing/GallerySection";
+import CTASection from "@/components/landing/CTASection";
+import ContactSection from "@/components/landing/ContactSection";
+import Footer from "@/components/landing/Footer";
+import WhatsAppButton from "@/components/landing/WhatsAppButton";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <Header />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <DifferentialsSection />
+        <SocialProofSection />
+        <CoverageSection />
+        <GallerySection />
+        <CTASection />
+        <ContactSection />
+      </main>
+      <Footer />
+      <WhatsAppButton />
+    </>
   );
 };
 
