@@ -5,6 +5,7 @@ const highlights = [
   "Mais de 15 anos de experiência no transporte frigorificado",
   "Frota 100% própria e rastreada em tempo real",
   "Conformidade total com ANVISA e órgãos reguladores",
+  "Controle rigoroso de temperatura durante todo o trajeto",
   "Equipe treinada em boas práticas de transporte de alimentos",
 ];
 
@@ -27,16 +28,27 @@ const AboutSection = () => {
           </div>
 
           <div>
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider">Sobre Nós</span>
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+              Sobre Nós
+            </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-6">
               Referência em Transporte Frigorificado de Carnes
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              A FrioLog é uma empresa especializada no transporte de carnes refrigeradas 
-              e congeladas, atendendo frigoríficos, açougues, casas de carnes, matadouros 
-              e distribuidores de proteína animal em todo o território nacional. 
-              Nossa missão é garantir que cada carga chegue ao destino com a mesma 
-              qualidade e temperatura com que saiu da origem.
+            <p className="text-muted-foreground text-lg leading-relaxed mb-4">
+              A FrioLog é especializada no transporte refrigerado e congelado de
+              alimentos, atendendo indústrias, frigoríficos, distribuidoras,
+              supermercados e estabelecimentos do setor alimentício em todo o
+              território nacional.
+            </p>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-4">
+              Transportamos carnes, pães de queijo, polpas de frutas, laticínios
+              e diversos outros produtos que exigem controle rigoroso de
+              temperatura e qualidade.
+            </p>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-4">
+              Nosso compromisso é garantir que cada carga chegue ao destino
+              preservando suas características originais, mantendo a cadeia de
+              frio intacta do ponto de origem até a entrega final.
             </p>
             <ul className="space-y-4">
               {highlights.map((item) => (

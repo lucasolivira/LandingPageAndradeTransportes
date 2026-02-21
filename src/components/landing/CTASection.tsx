@@ -9,7 +9,7 @@ const CTASection = () => {
           Precisa de Transporte Seguro para sua Carne?
         </h2>
         <p className="text-lg text-secondary-foreground/80 max-w-2xl mx-auto mb-10">
-          Solicite um orçamento sem compromisso e descubra como podemos otimizar 
+          Solicite um orçamento sem compromisso e descubra como podemos otimizar
           a logística frigorificada do seu negócio com segurança e pontualidade.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -19,17 +19,26 @@ const CTASection = () => {
             </Button>
           </a>
           <a
-            href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+            href="https://wa.me/5534988939793?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button size="lg" variant="outline" className="text-base px-8 py-6 w-full sm:w-auto border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10">
+            <Button
+              size="lg"
+              variant="default"
+              className="text-base px-8 py-6 w-full sm:w-auto border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10"
+            >
               <MessageCircle className="h-5 w-5 mr-2" />
               Falar no WhatsApp
             </Button>
           </a>
           <a href="mailto:contato@friolog.com.br">
-            <Button size="lg" variant="outline" className="text-base px-8 py-6 w-full sm:w-auto border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10">
+            {/* colocar email valido */}
+            <Button
+              size="lg"
+              variant="default"
+              className="text-base px-8 py-6 w-full sm:w-auto border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10"
+            >
               <Mail className="h-5 w-5 mr-2" />
               Enviar E-mail
             </Button>

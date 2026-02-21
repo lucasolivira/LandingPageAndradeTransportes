@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -7,19 +8,27 @@ import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({ nome: "", empresa: "", telefone: "", mensagem: "" });
+  const [form, setForm] = useState({
+    nome: "",
+    empresa: "",
+    telefone: "",
+    mensagem: "",
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const { nome, empresa, telefone, mensagem } = form;
     if (!nome.trim() || !telefone.trim()) {
-      toast({ title: "Preencha os campos obrigatórios", variant: "destructive" });
+      toast({
+        title: "Preencha os campos obrigatórios",
+        variant: "destructive",
+      });
       return;
     }
     const text = encodeURIComponent(
-      `Olá! Meu nome é ${nome.trim()}, da empresa ${empresa.trim() || "Não informada"}. Telefone: ${telefone.trim()}. Mensagem: ${mensagem.trim() || "Gostaria de um orçamento."}`
+      `Olá! Meu nome é ${nome.trim()}, da empresa ${empresa.trim() || "Não informada"}. Telefone: ${telefone.trim()}. Mensagem: ${mensagem.trim() || "Gostaria de um orçamento."}`,
     );
-    window.open(`https://wa.me/5511999999999?text=${text}`, "_blank");
+    window.open(`https://wa.me/5534988939793?text=${text}`, "_blank");
     toast({ title: "Redirecionando para o WhatsApp..." });
     setForm({ nome: "", empresa: "", telefone: "", mensagem: "" });
   };
@@ -28,12 +37,15 @@ const ContactSection = () => {
     <section id="contato" className="section-padding bg-section-alt">
       <div className="container-custom">
         <div className="text-center mb-12">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Fale Conosco</span>
+          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+            Fale Conosco
+          </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
             Entre em Contato
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Solicite seu orçamento ou tire suas dúvidas. Estamos prontos para atender você.
+            Solicite seu orçamento ou tire suas dúvidas. Estamos prontos para
+            atender você.
           </p>
         </div>
 
@@ -48,16 +60,17 @@ const ContactSection = () => {
               </div>
             </div>
             <div className="flex items-start gap-4 p-5 bg-card rounded-xl border border-border">
-              <MessageCircle className="h-6 w-6 text-primary mt-1 shrink-0" />
+              <FaWhatsapp className="h-6 w-6 text-primary mt-1 shrink-0" />
+
               <div>
                 <h4 className="font-bold text-foreground">WhatsApp</h4>
                 <a
-                  href="https://wa.me/5511999999999"
+                  href="https://wa.me/5534988939793"
                   className="text-primary hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  (11) 99999-9999
+                  (34) 98893-9793
                 </a>
               </div>
             </div>
@@ -65,8 +78,11 @@ const ContactSection = () => {
               <Mail className="h-6 w-6 text-primary mt-1 shrink-0" />
               <div>
                 <h4 className="font-bold text-foreground">E-mail</h4>
-                <a href="mailto:contato@friolog.com.br" className="text-primary hover:underline">
-                  contato@friolog.com.br
+                <a
+                  href="mailto:contato@friolog.com.br"
+                  className="text-primary hover:underline"
+                >
+                  contato@grupoandradetransportes.com.br
                 </a>
               </div>
             </div>
@@ -75,17 +91,22 @@ const ContactSection = () => {
               <div>
                 <h4 className="font-bold text-foreground">Endereço</h4>
                 <p className="text-muted-foreground">
-                  Av. Industrial, 1500 - Distrito Industrial<br />
-                  São Paulo - SP, 01000-000
+                  Rua Guarani, 480-490-500 - Bairro Amorim
+                  <br />
+                  Minas Gerais - MG, 38446-132
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="bg-card rounded-xl p-8 border border-border space-y-5">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-card rounded-xl p-8 border border-border space-y-5"
+          >
             <div>
-              <label className="text-sm font-medium text-foreground mb-1.5 block">Nome *</label>
+              <label className="text-sm font-medium text-foreground mb-1.5 block">
+                Nome *
+              </label>
               <Input
                 placeholder="Seu nome completo"
                 value={form.nome}
@@ -95,7 +116,9 @@ const ContactSection = () => {
               />
             </div>
             <div>
-              <label className="text-sm font-medium text-foreground mb-1.5 block">Empresa</label>
+              <label className="text-sm font-medium text-foreground mb-1.5 block">
+                Empresa
+              </label>
               <Input
                 placeholder="Nome da sua empresa"
                 value={form.empresa}
@@ -104,7 +127,9 @@ const ContactSection = () => {
               />
             </div>
             <div>
-              <label className="text-sm font-medium text-foreground mb-1.5 block">Telefone *</label>
+              <label className="text-sm font-medium text-foreground mb-1.5 block">
+                Telefone *
+              </label>
               <Input
                 placeholder="(00) 00000-0000"
                 value={form.telefone}
@@ -114,7 +139,9 @@ const ContactSection = () => {
               />
             </div>
             <div>
-              <label className="text-sm font-medium text-foreground mb-1.5 block">Mensagem</label>
+              <label className="text-sm font-medium text-foreground mb-1.5 block">
+                Mensagem
+              </label>
               <Textarea
                 placeholder="Descreva sua necessidade de transporte..."
                 value={form.mensagem}
