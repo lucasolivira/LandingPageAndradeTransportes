@@ -4,25 +4,45 @@ import warehouseImg from "@/assets/warehouse.jpg";
 import teamImg from "@/assets/team.jpg";
 import tempImg from "@/assets/temperature-control.jpg";
 import Dhiosney from "@/assets/dhiosney.jpeg";
+import { useState } from "react";
+import DescriptionModal from "./DescriptionModal";
 
 const images = [
   {
     src: heroImg,
     alt: "Frota refrigerada Grupo Andrade Transportes",
     label: "Nossa Frota",
+    description:
+      "Nossa frota conta com caminhões refrigerados modernos, equipados com controle rigoroso de temperatura e rastreamento em tempo real.",
   },
   {
     src: warehouseImg,
     alt: "Estrutura de armazenamento refrigerado",
     label: "Estrutura",
+    description:
+      "Estrutura preparada para armazenagem refrigerada e logística frigorificada com alto padrão de segurança.",
   },
-  { src: teamImg, alt: "Equipe Grupo Andrade Transportes", label: "Equipe" },
+  {
+    src: teamImg,
+    alt: "Equipe Grupo Andrade Transportes",
+    label: "Equipe",
+    description:
+      "Equipe especializada em transporte frigorificado, treinada para garantir segurança e pontualidade.",
+  },
   {
     src: tempImg,
     alt: "Controle de temperatura dos caminhões",
     label: "Tecnologia",
+    description:
+      "Tecnologia de controle térmico com monitoramento constante da carga durante todo o trajeto.",
   },
-  { src: Dhiosney, alt: "Fundador e Atual Dono da empresa", label: "CEO" },
+  {
+    src: Dhiosney,
+    alt: "Fundador e Atual Dono da empresa",
+    label: "CEO",
+    description:
+      "Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.Fundador e atual CEO da empresa, responsável pela visão estratégica e crescimento da organização.",
+  },
 ];
 
 // Duplicamos as imagens para criar o efeito de loop infinito
@@ -32,6 +52,21 @@ const GallerySection = () => {
   const trackRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number>(0);
   const positionRef = useRef(0);
+  const [selectedImage, setSelectedImage] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = (img: any) => {
+    setSelectedImage(img);
+    setIsModalOpen(true);
+  };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isModalOpen]);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -80,7 +115,8 @@ const GallerySection = () => {
           {loopedImages.map((img, index) => (
             <div
               key={`${img.label}-${index}`}
-              className="group relative rounded-xl overflow-hidden flex-shrink-0"
+              onClick={() => handleOpenModal(img)}
+              className="group relative rounded-xl overflow-hidden flex-shrink-0 cursor-pointer"
               style={{ width: "320px", aspectRatio: "4/3" }}
             >
               <img
@@ -98,6 +134,11 @@ const GallerySection = () => {
           ))}
         </div>
       </div>
+      <DescriptionModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        image={selectedImage}
+      />
     </section>
   );
 };
