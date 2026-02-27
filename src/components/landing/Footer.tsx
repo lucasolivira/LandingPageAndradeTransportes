@@ -1,4 +1,4 @@
-import Logo from "@/assets/grupoAndradeTransp-removebg-preview.png";
+import Logo from "@/assets/LogoAndradeTransportes.png";
 
 const Footer = () => {
   return (
@@ -9,11 +9,11 @@ const Footer = () => {
             <div className="flex items-start gap-2 mb-4">
               <img
                 src={Logo}
-                alt="Grupo Andrade Transportes"
+                alt="Andrade Transportes"
                 className="w-20 h-auto object-contain"
               />
               <span className="font-bold text-lg leading-tight">
-                Grupo Andrade Transportes
+                Andrade Transportes
               </span>
             </div>
             <p className="text-secondary-foreground/70 text-sm leading-relaxed">
@@ -64,8 +64,8 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-secondary-foreground/20 pt-6 text-center text-sm text-secondary-foreground/50">
-          © {new Date().getFullYear()} Grupo Andrade Transportes. Todos os
-          direitos reservados.
+          © {new Date().getFullYear()} Andrade Transportes. Todos os direitos
+          reservados.
         </div>
       </div>
     </footer>
