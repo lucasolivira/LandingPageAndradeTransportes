@@ -1,5 +1,6 @@
-import { MessageCircle, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { FaWhatsapp } from "react-icons/fa";
 
 const CTASection = () => {
   return (
@@ -28,7 +29,7 @@ const CTASection = () => {
               variant="default"
               className="text-base px-8 py-6 w-full sm:w-auto border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10"
             >
-              <MessageCircle className="h-5 w-5 mr-2" />
+              <FaWhatsapp className="h-5 w-5 mr-2" />
               Falar no WhatsApp
             </Button>
           </a>
