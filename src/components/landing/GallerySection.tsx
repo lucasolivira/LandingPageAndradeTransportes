@@ -10,7 +10,7 @@ import DescriptionModal from "./DescriptionModal";
 const images = [
   {
     src: heroImg,
-    alt: "Frota refrigerada Grupo Andrade Transportes",
+    alt: "Frota refrigerada Andrade Transportes",
     label: "Nossa Frota",
     description:
       "Nossa frota conta com caminhões refrigerados modernos, equipados com controle rigoroso de temperatura e rastreamento em tempo real.",
@@ -24,7 +24,7 @@ const images = [
   },
   {
     src: teamImg,
-    alt: "Equipe Grupo Andrade Transportes",
+    alt: "Equipe Andrade Transportes",
     label: "Equipe",
     description:
       "Equipe especializada em transporte frigorificado, treinada para garantir segurança e pontualidade.",
