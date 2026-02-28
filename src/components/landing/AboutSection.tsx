@@ -17,7 +17,7 @@ const AboutSection = () => {
           <div className="relative">
             <img
               src={teamImg}
-              alt="Equipe FrioLog especializada em transporte de carnes"
+              alt="Equipe Andrade Transportes especializada em transporte de carnes"
               className="rounded-2xl w-full object-cover aspect-[4/3] shadow-lg"
               loading="lazy"
             />
@@ -35,10 +35,10 @@ const AboutSection = () => {
               Referência em Transporte Frigorificado de Carnes
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-4">
-              A FrioLog é especializada no transporte refrigerado e congelado de
-              alimentos, atendendo indústrias, frigoríficos, distribuidoras,
-              supermercados e estabelecimentos do setor alimentício em todo o
-              território nacional.
+              A Andrade Transportes é especializada no transporte refrigerado e
+              congelado de alimentos, atendendo indústrias, frigoríficos,
+              distribuidoras, supermercados e estabelecimentos do setor
+              alimentício em todo o território nacional.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed mb-4">
               Transportamos carnes, pães de queijo, polpas de frutas, laticínios

@@ -11,17 +11,17 @@ const testimonials = [
   {
     name: "Carlos Mendes",
     role: "Proprietário - Açougue Premium",
-    text: "A FrioLog transformou nossa logística. Desde que contratamos, não tivemos nenhum problema com temperatura ou atrasos. Recomendo sem hesitar.",
+    text: "A Andrade Transportes transformou nossa logística. Desde que contratamos, não tivemos nenhum problema com temperatura ou atrasos. Recomendo sem hesitar.",
   },
   {
     name: "Ana Souza",
     role: "Gerente de Logística - Frigorífico São Paulo",
-    text: "Profissionalismo e pontualidade são as palavras que definem a FrioLog. A carne chega sempre na temperatura ideal e dentro do prazo combinado.",
+    text: "Profissionalismo e pontualidade são as palavras que definem a Andrade Transportes. A carne chega sempre na temperatura ideal e dentro do prazo combinado.",
   },
   {
     name: "Roberto Lima",
     role: "Diretor - Distribuidora Carne & Cia",
-    text: "Trabalhamos com a FrioLog há mais de 5 anos. A confiança que temos neles nos permite focar no nosso negócio sem se preocupar com o transporte.",
+    text: "Trabalhamos com a Andrade Transportes há mais de 5 anos. A confiança que temos neles nos permite focar no nosso negócio sem se preocupar com o transporte.",
   },
 ];
 
@@ -36,15 +36,21 @@ const SocialProofSection = () => {
               key={stat.label}
               className="text-center p-6 rounded-xl bg-secondary text-secondary-foreground"
             >
-              <span className="text-4xl md:text-5xl font-bold block mb-1">{stat.value}</span>
-              <span className="text-sm text-secondary-foreground/80">{stat.label}</span>
+              <span className="text-4xl md:text-5xl font-bold block mb-1">
+                {stat.value}
+              </span>
+              <span className="text-sm text-secondary-foreground/80">
+                {stat.label}
+              </span>
             </div>
           ))}
         </div>
 
         {/* Testimonials */}
         <div className="text-center mb-12">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Prova Social</span>
+          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+            Prova Social
+          </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
             O Que Nossos Clientes Dizem
           </h2>

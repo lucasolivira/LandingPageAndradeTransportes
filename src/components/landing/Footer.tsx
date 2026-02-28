@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container-custom">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
           <div>
-            <div className="flex items-start gap-2 mb-4">
+            <div className="flex items-center gap-2 mb-4">
               <img
                 src={Logo}
                 alt="Andrade Transportes"

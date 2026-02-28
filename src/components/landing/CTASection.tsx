@@ -33,7 +33,7 @@ const CTASection = () => {
               Falar no WhatsApp
             </Button>
           </a>
-          <a href="mailto:contato@friolog.com.br">
+          <a href="mailto:contato@AndradeTransportes.com.br">
             {/* colocar email valido */}
             <Button
               size="lg"
