@@ -1,12 +1,13 @@
-import { MessageCircle, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { FaWhatsapp } from "react-icons/fa";
 
 const CTASection = () => {
   return (
     <section className="section-padding bg-secondary text-secondary-foreground">
       <div className="container-custom text-center">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-          Precisa de Transporte Seguro para sua Carne?
+          Precisa de Transporte Seguro para seu Produto?
         </h2>
         <p className="text-lg text-secondary-foreground/80 max-w-2xl mx-auto mb-10">
           Solicite um orçamento sem compromisso e descubra como podemos otimizar
@@ -28,7 +29,7 @@ const CTASection = () => {
               variant="default"
               className="text-base px-8 py-6 w-full sm:w-auto border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10"
             >
-              <MessageCircle className="h-5 w-5 mr-2" />
+              <FaWhatsapp className="h-5 w-5 mr-2" />
               Falar no WhatsApp
             </Button>
           </a>

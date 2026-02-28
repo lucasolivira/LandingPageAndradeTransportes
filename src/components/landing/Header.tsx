@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Logo from "@/assets/grupoAndradeTransp-removebg-preview.png";
+import Logo from "@/assets/LogoAndradeTransportes.png";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -18,18 +18,18 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="container-custom flex items-center justify-between h-16 px-4 md:px-8">
-        <a href="#hero" className="flex items-center gap-2">
+        <a href="#hero" className="flex items-center gap-1">
           <img
             src={Logo}
-            alt="Grupo Andrade Transportes"
+            alt="Andrade Transportes"
             className="w-32 h-32 object-contain"
           />
-          <span className="font-bold text-lg text-foreground hidden sm:block">
-            Grupo Andrade Transportes
+          <span className="font-bold text-xl text-foreground hidden sm:block">
+            Andrade Transportes
           </span>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-6 ">
           {navItems.map((item) => (
             <a
               key={item.href}

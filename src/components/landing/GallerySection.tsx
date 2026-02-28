@@ -1,103 +1,171 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import heroImg from "@/assets/hero-truck.jpg";
 import warehouseImg from "@/assets/warehouse.jpg";
 import teamImg from "@/assets/team.jpg";
 import tempImg from "@/assets/temperature-control.jpg";
 import Dhiosney from "@/assets/dhiosney.jpeg";
+import DescriptionModal from "./DescriptionModal";
 
 const images = [
   {
     src: heroImg,
-    alt: "Frota refrigerada Grupo Andrade Transportes",
+    alt: "Frota",
     label: "Nossa Frota",
+    description: "Nossa frota conta com caminhões modernos refrigerados...",
   },
   {
     src: warehouseImg,
-    alt: "Estrutura de armazenamento refrigerado",
+    alt: "Estrutura",
     label: "Estrutura",
+    description: "Estrutura preparada para armazenagem refrigerada...",
   },
-  { src: teamImg, alt: "Equipe Grupo Andrade Transportes", label: "Equipe" },
+  {
+    src: teamImg,
+    alt: "Equipe",
+    label: "Equipe",
+    description: "Equipe especializada em transporte frigorificado...",
+  },
   {
     src: tempImg,
-    alt: "Controle de temperatura dos caminhões",
+    alt: "Tecnologia",
     label: "Tecnologia",
+    description: "Controle térmico com monitoramento em tempo real...",
   },
-  { src: Dhiosney, alt: "Fundador e Atual Dono da empresa", label: "CEO" },
+  {
+    src: Dhiosney,
+    alt: "CEO",
+    label: "CEO",
+    description: "Fundador e atual CEO da empresa...",
+  },
 ];
 
-// Duplicamos as imagens para criar o efeito de loop infinito
-const loopedImages = [...images, ...images];
+const visibleSlides = 3;
+
+const extendedImages = [
+  ...images.slice(-visibleSlides),
+  ...images,
+  ...images.slice(0, visibleSlides),
+];
 
 const GallerySection = () => {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number>(0);
-  const positionRef = useRef(0);
+  const [currentIndex, setCurrentIndex] = useState(visibleSlides);
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
+  // 🔥 estados do modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<any>(null);
+
+  // 🔥 função abrir modal
+  const handleOpenModal = (img: any) => {
+    setSelectedImage(img);
+    setIsModalOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    document.body.style.overflow = "auto";
+  };
+
+  // autoplay
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 4000);
 
-    const speed = 0.5; // pixels por frame (~1.3s por imagem a 300px de largura)
-
-    const animate = () => {
-      positionRef.current += speed;
-
-      // Quando percorreu metade (o set original), volta ao início sem salto visível
-      const halfWidth = track.scrollWidth / 2;
-      if (positionRef.current >= halfWidth) {
-        positionRef.current = 0;
-      }
-
-      track.style.transform = `translateX(-${positionRef.current}px)`;
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    animationRef.current = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(animationRef.current);
+    return () => clearInterval(interval);
   }, []);
 
-  return (
-    <section className="section-padding bg-background overflow-hidden">
-      <div className="container-custom">
-        <div className="text-center mb-12">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-            Galeria
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
-            Nossa Estrutura e Operação
-          </h2>
-        </div>
-      </div>
+  const nextSlide = () => {
+    setCurrentIndex((prev) => prev + 1);
+  };
 
-      {/* Faixa de scroll sem padding lateral para sair da tela */}
-      <div className="overflow-hidden">
+  const prevSlide = () => {
+    setCurrentIndex((prev) => prev - 1);
+  };
+
+  // loop invisível
+  useEffect(() => {
+    if (currentIndex === images.length + visibleSlides) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(visibleSlides);
+      }, 700);
+    }
+
+    if (currentIndex === 0) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(images.length);
+      }, 700);
+    }
+  }, [currentIndex]);
+
+  useEffect(() => {
+    if (!isTransitioning) {
+      const timeout = setTimeout(() => {
+        setIsTransitioning(true);
+      }, 50);
+      return () => clearTimeout(timeout);
+    }
+  }, [isTransitioning]);
+
+  return (
+    <section className="section-padding bg-background">
+      <div className="relative max-w-6xl mx-auto overflow-hidden">
         <div
-          ref={trackRef}
-          className="flex gap-4 w-max"
-          style={{ willChange: "transform" }}
+          className="flex"
+          style={{
+            transform: `translateX(-${currentIndex * (100 / visibleSlides)}%)`,
+            transition: isTransitioning ? "transform 0.7s ease-in-out" : "none",
+          }}
         >
-          {loopedImages.map((img, index) => (
+          {extendedImages.map((img, index) => (
             <div
-              key={`${img.label}-${index}`}
-              className="group relative rounded-xl overflow-hidden flex-shrink-0"
-              style={{ width: "320px", aspectRatio: "4/3" }}
+              key={index}
+              className="flex-shrink-0 px-2"
+              style={{ width: `${100 / visibleSlides}%` }}
             >
-              <img
-                src={img.src}
-                alt={img.alt}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-secondary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <span className="text-secondary-foreground font-semibold text-lg">
-                  {img.label}
-                </span>
+              {/* 👇 AQUI ESTÁ O CLIQUE */}
+              <div
+                onClick={() => handleOpenModal(img)}
+                className="relative rounded-xl overflow-hidden group cursor-pointer"
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-[300px] object-cover transition-all duration-500 ease-out group-hover:scale-110 group-hover:brightness-110"
+                />
+                <div className="absolute inset-0 bg-black/40 flex items-end p-4 transition-opacity duration-500 group-hover:bg-black/30">
+                  <span className="text-white font-semibold">{img.label}</span>
+                </div>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Botões */}
+        <button
+          onClick={prevSlide}
+          className="absolute top-1/2 left-4 -translate-y-1/2 bg-white/70 hover:bg-white px-3 py-2 rounded-full shadow"
+        >
+          ◀
+        </button>
+
+        <button
+          onClick={nextSlide}
+          className="absolute top-1/2 right-4 -translate-y-1/2 bg-white/70 hover:bg-white px-3 py-2 rounded-full shadow"
+        >
+          ▶
+        </button>
       </div>
+
+      {/* 👇 MODAL RENDERIZADO AQUI */}
+      <DescriptionModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        image={selectedImage}
+      />
     </section>
   );
 };
