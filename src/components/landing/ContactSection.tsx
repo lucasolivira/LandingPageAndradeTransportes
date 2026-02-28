@@ -79,7 +79,7 @@ const ContactSection = () => {
               <div>
                 <h4 className="font-bold text-foreground">E-mail</h4>
                 <a
-                  href="mailto:contato@friolog.com.br"
+                  href="mailto:contato@AndradeTransportes.com.br"
                   className="text-primary hover:underline"
                 >
                   email@andradetransportes.com.br
