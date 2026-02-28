@@ -19,10 +19,6 @@ const HeroSection = () => {
 
       <div className="relative z-10 container-custom px-4 md:px-8 py-20 md:py-32">
         <div className="max-w-3xl">
-          {/* <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium mb-6 border border-primary-foreground/20">
-            Especialistas em Transporte de Produtos Refrigerados e Congelados
-          </span> */}
-
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6">
             Transporte com <span className="text-primary">Segurança</span>,{" "}
             <span className="text-primary">Pontualidade</span> e{" "}
