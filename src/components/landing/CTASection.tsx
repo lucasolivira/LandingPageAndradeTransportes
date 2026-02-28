@@ -7,7 +7,7 @@ const CTASection = () => {
     <section className="section-padding bg-secondary text-secondary-foreground">
       <div className="container-custom text-center">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-          Precisa de Transporte Seguro para sua Carne?
+          Precisa de Transporte Seguro para seu Produto?
         </h2>
         <p className="text-lg text-secondary-foreground/80 max-w-2xl mx-auto mb-10">
           Solicite um orçamento sem compromisso e descubra como podemos otimizar
