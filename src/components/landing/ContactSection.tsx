@@ -52,14 +52,14 @@ const ContactSection = () => {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Info */}
           <div className="space-y-6">
-            <div className="flex items-start gap-4 p-5 bg-card rounded-xl border border-border">
+            <div className="flex items-center gap-4 p-5 bg-card rounded-xl border border-border">
               <Phone className="h-6 w-6 text-primary mt-1 shrink-0" />
               <div>
                 <h4 className="font-bold text-foreground">Telefone</h4>
                 <p className="text-muted-foreground">(11) 99999-9999</p>
               </div>
             </div>
-            <div className="flex items-start gap-4 p-5 bg-card rounded-xl border border-border">
+            <div className="flex items-center gap-4 p-5 bg-card rounded-xl border border-border">
               <FaWhatsapp className="h-6 w-6 text-primary mt-1 shrink-0" />
 
               <div>
@@ -74,7 +74,7 @@ const ContactSection = () => {
                 </a>
               </div>
             </div>
-            <div className="flex items-start gap-4 p-5 bg-card rounded-xl border border-border">
+            <div className="flex items-center gap-4 p-5 bg-card rounded-xl border border-border">
               <Mail className="h-6 w-6 text-primary mt-1 shrink-0" />
               <div>
                 <h4 className="font-bold text-foreground">E-mail</h4>
@@ -82,11 +82,11 @@ const ContactSection = () => {
                   href="mailto:contato@friolog.com.br"
                   className="text-primary hover:underline"
                 >
-                  contato@grupoandradetransportes.com.br
+                  email@andradetransportes.com.br
                 </a>
               </div>
             </div>
-            <div className="flex items-start gap-4 p-5 bg-card rounded-xl border border-border">
+            <div className="flex items-center gap-4 p-5 bg-card rounded-xl border border-border">
               <MapPin className="h-6 w-6 text-primary mt-1 shrink-0" />
               <div>
                 <h4 className="font-bold text-foreground">Endereço</h4>
