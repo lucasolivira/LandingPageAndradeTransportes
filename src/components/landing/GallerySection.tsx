@@ -51,11 +51,11 @@ const GallerySection = () => {
   const [currentIndex, setCurrentIndex] = useState(visibleSlides);
   const [isTransitioning, setIsTransitioning] = useState(true);
 
-  // 🔥 estados do modal
+  // estados do modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<any>(null);
 
-  // 🔥 função abrir modal
+  // função abrir modal
   const handleOpenModal = (img: any) => {
     setSelectedImage(img);
     setIsModalOpen(true);
@@ -126,7 +126,6 @@ const GallerySection = () => {
               className="flex-shrink-0 px-2"
               style={{ width: `${100 / visibleSlides}%` }}
             >
-              {/* 👇 AQUI ESTÁ O CLIQUE */}
               <div
                 onClick={() => handleOpenModal(img)}
                 className="relative rounded-xl overflow-hidden group cursor-pointer"
@@ -144,7 +143,6 @@ const GallerySection = () => {
           ))}
         </div>
 
-        {/* Botões */}
         <button
           onClick={prevSlide}
           className="absolute top-1/2 left-4 -translate-y-1/2 bg-white/70 hover:bg-white px-3 py-2 rounded-full shadow"
@@ -160,7 +158,6 @@ const GallerySection = () => {
         </button>
       </div>
 
-      {/* 👇 MODAL RENDERIZADO AQUI */}
       <DescriptionModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}

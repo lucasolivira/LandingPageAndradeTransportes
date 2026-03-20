@@ -25,7 +25,7 @@ const Header = () => {
             className="w-32 h-32 object-contain"
           />
           <span className="font-bold text-xl text-foreground hidden sm:block">
-            Andrade Transportes
+            Andrade Transportes Araguari
           </span>
         </a>
 
