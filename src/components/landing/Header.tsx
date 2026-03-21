@@ -2,18 +2,11 @@ import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Logo from "@/assets/LogoAndradeTransportes.png";
+import { NAV_ITEMS } from "@/constants/navigation";
+import { CONTACT } from "@/constants/contact";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  const navItems = [
-    { label: "Início", href: "#hero" },
-    { label: "Sobre", href: "#sobre" },
-    { label: "Diferenciais", href: "#diferenciais" },
-    { label: "Depoimentos", href: "#depoimentos" },
-    { label: "Atuação", href: "#atuacao" },
-    { label: "Contato", href: "#contato" },
-  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
@@ -21,16 +14,16 @@ const Header = () => {
         <a href="#hero" className="flex items-center gap-1">
           <img
             src={Logo}
-            alt="Andrade Transportes"
+            alt={CONTACT.company.name}
             className="w-32 h-32 object-contain"
           />
           <span className="font-bold text-xl text-foreground hidden sm:block">
-            Andrade Transportes Araguari
+            {CONTACT.company.name}
           </span>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-6 ">
-          {navItems.map((item) => (
+        <nav className="hidden lg:flex items-center gap-6">
+          {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
               href={item.href}
@@ -42,11 +35,11 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a href="tel:+5511999999999" className="hidden md:flex">
+          <a href={CONTACT.phone.href} className="hidden md:flex">
+            {" "}
             <Button variant="outline" size="sm" className="gap-2">
               <Phone className="h-4 w-4" />
-              (11) 99999-9999
-              {/* colocar o telefone correto */}
+              {CONTACT.phoneFixo.display}
             </Button>
           </a>
           <a href="#contato">
@@ -69,7 +62,7 @@ const Header = () => {
       {mobileOpen && (
         <div className="lg:hidden bg-background border-b border-border">
           <nav className="flex flex-col px-4 py-4 gap-3">
-            {navItems.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
                 href={item.href}

@@ -63,7 +63,6 @@ const DescriptionModal = ({
     // </div>
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
       <div className="bg-background w-full max-w-3xl max-h-[90vh] rounded-2xl shadow-2xl animate-in fade-in zoom-in-95 duration-200 flex flex-col overflow-hidden">
-        {/* HEADER */}
         <div className="flex items-center justify-between px-6 py-4 border-b">
           <h3 className="text-2xl font-bold">{image.label}</h3>
 
@@ -75,7 +74,6 @@ const DescriptionModal = ({
           </button>
         </div>
 
-        {/* IMAGEM */}
         <div className="w-full bg-muted">
           <img
             src={image.src}
@@ -84,7 +82,6 @@ const DescriptionModal = ({
           />
         </div>
 
-        {/* DESCRIÇÃO */}
         <div className="px-6 py-6 overflow-y-auto">
           <p className="text-muted-foreground text-base leading-7 tracking-wide text-justify">
             {image.description}

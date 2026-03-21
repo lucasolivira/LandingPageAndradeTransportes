@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-truck.jpg";
 import { FaWhatsapp } from "react-icons/fa";
+import { CONTACT } from "@/constants/contact";
 
 const HeroSection = () => {
   return (
@@ -41,7 +42,7 @@ const HeroSection = () => {
             </a>
 
             <a
-              href="https://wa.me/5534988939793?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20transporte%20de%20produtos%20refrigerados%20e%20congelados."
+              href={CONTACT.whatsapp.href}
               target="_blank"
               rel="noopener noreferrer"
             >

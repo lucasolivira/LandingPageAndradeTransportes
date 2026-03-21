@@ -1,4 +1,5 @@
 import Logo from "@/assets/LogoAndradeTransportes.png";
+import { CONTACT } from "@/constants/contact";
 
 const Footer = () => {
   return (
@@ -9,11 +10,11 @@ const Footer = () => {
             <div className="flex items-center gap-2 mb-4">
               <img
                 src={Logo}
-                alt="Andrade Transportes"
+                alt={CONTACT.company.name}
                 className="w-20 h-auto object-contain"
               />
               <span className="font-bold text-lg leading-tight">
-                Andrade Transportes
+                {CONTACT.company.name}
               </span>
             </div>
             <p className="text-secondary-foreground/70 text-sm leading-relaxed">
@@ -55,16 +56,15 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4">Contato</h4>
             <ul className="space-y-2 text-sm text-secondary-foreground/70">
-              <li>(11) 99999-9999</li>
-              {/* colocar o número real da empresa */}
-              <li>contato@grupoandradetransportes.com.br</li>
-              <li>Minas Gerais - MG</li>
+              <li>{CONTACT.phoneFixo.display}</li>
+              <li>{CONTACT.email.address}</li>
+              <li>{CONTACT.local.state}</li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-secondary-foreground/20 pt-6 text-center text-sm text-secondary-foreground/50">
-          © {new Date().getFullYear()} Andrade Transportes. Todos os direitos
+          © {new Date().getFullYear()} {CONTACT.company.name}. Todos os direitos
           reservados.
         </div>
       </div>
