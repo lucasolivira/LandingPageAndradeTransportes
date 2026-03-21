@@ -1,6 +1,7 @@
 import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FaWhatsapp } from "react-icons/fa";
+import { CONTACT } from "@/constants/contact";
 
 const CTASection = () => {
   return (
@@ -20,7 +21,7 @@ const CTASection = () => {
             </Button>
           </a>
           <a
-            href="https://wa.me/5534988939793?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+            href={CONTACT.whatsapp.href}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -33,8 +34,7 @@ const CTASection = () => {
               Falar no WhatsApp
             </Button>
           </a>
-          <a href="mailto:contato@AndradeTransportes.com.br">
-            {/* colocar email valido */}
+          <a href={CONTACT.email.href}>
             <Button
               size="lg"
               variant="default"

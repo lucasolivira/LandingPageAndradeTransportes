@@ -1,9 +1,10 @@
 import { FaWhatsapp } from "react-icons/fa";
+import { CONTACT } from "@/constants/contact";
 
 const WhatsAppButton = () => {
   return (
     <a
-      href="https://wa.me/5534988939793?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20transporte."
+      href={CONTACT.whatsapp.href}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[hsl(142,70%,45%)] text-[hsl(0,0%,100%)] flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
