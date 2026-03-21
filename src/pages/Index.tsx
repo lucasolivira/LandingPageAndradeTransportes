@@ -1,14 +1,16 @@
-import Header from "@/components/landing/Header";
-import HeroSection from "@/components/landing/HeroSection";
-import AboutSection from "@/components/landing/AboutSection";
-import DifferentialsSection from "@/components/landing/DifferentialsSection";
-import SocialProofSection from "@/components/landing/SocialProofSection";
-import CoverageSection from "@/components/landing/CoverageSection";
-import GallerySection from "@/components/landing/GallerySection";
-import CTASection from "@/components/landing/CTASection";
-import ContactSection from "@/components/landing/ContactSection";
-import Footer from "@/components/landing/Footer";
-import WhatsAppButton from "@/components/landing/WhatsAppButton";
+import {
+  Header,
+  HeroSection,
+  AboutSection,
+  DifferentialsSection,
+  SocialProofSection,
+  CoverageSection,
+  GallerySection,
+  CTASection,
+  ContactSection,
+  Footer,
+  WhatsAppButton,
+} from "@/components/landing";
 
 const Index = () => {
   return (

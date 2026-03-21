@@ -1,0 +1,11 @@
+export { default as Header } from "./Header";
+export { default as HeroSection } from "./HeroSection";
+export { default as AboutSection } from "./AboutSection";
+export { default as DifferentialsSection } from "./DifferentialsSection";
+export { default as SocialProofSection } from "./SocialProofSection";
+export { default as CoverageSection } from "./CoverageSection";
+export { default as GallerySection } from "./GallerySection";
+export { default as CTASection } from "./CTASection";
+export { default as ContactSection } from "./ContactSection";
+export { default as Footer } from "./Footer";
+export { default as WhatsAppButton } from "./WhatsAppButton";

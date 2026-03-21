@@ -1,5 +1,7 @@
 import { Star, Quote } from "lucide-react";
 
+//Futuramente ira pegar os dados do google maps.
+
 const stats = [
   { value: "15+", label: "Anos de Mercado" },
   { value: "500+", label: "Clientes Atendidos" },

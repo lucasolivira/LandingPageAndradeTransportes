@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { CONTACT } from "@/constants/contact";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -28,7 +29,10 @@ const ContactSection = () => {
     const text = encodeURIComponent(
       `Olá! Meu nome é ${nome.trim()}, da empresa ${empresa.trim() || "Não informada"}. Telefone: ${telefone.trim()}. Mensagem: ${mensagem.trim() || "Gostaria de um orçamento."}`,
     );
-    window.open(`https://wa.me/5534988939793?text=${text}`, "_blank");
+    window.open(
+      `https://wa.me/${CONTACT.whatsapp.number}?text=${text}`,
+      "_blank",
+    );
     toast({ title: "Redirecionando para o WhatsApp..." });
     setForm({ nome: "", empresa: "", telefone: "", mensagem: "" });
   };
@@ -56,7 +60,9 @@ const ContactSection = () => {
               <Phone className="h-6 w-6 text-primary mt-1 shrink-0" />
               <div>
                 <h4 className="font-bold text-foreground">Telefone</h4>
-                <p className="text-muted-foreground">(11) 99999-9999</p>
+                <p className="text-muted-foreground">
+                  {CONTACT.phoneFixo.display}
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-4 p-5 bg-card rounded-xl border border-border">
@@ -70,7 +76,7 @@ const ContactSection = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  (34) 98893-9793
+                  {CONTACT.phone.display}
                 </a>
               </div>
             </div>
@@ -79,10 +85,10 @@ const ContactSection = () => {
               <div>
                 <h4 className="font-bold text-foreground">E-mail</h4>
                 <a
-                  href="mailto:contato@AndradeTransportes.com.br"
+                  href={CONTACT.email.href}
                   className="text-primary hover:underline"
                 >
-                  email@andradetransportes.com.br
+                  {CONTACT.email.address}
                 </a>
               </div>
             </div>
@@ -91,9 +97,9 @@ const ContactSection = () => {
               <div>
                 <h4 className="font-bold text-foreground">Endereço</h4>
                 <p className="text-muted-foreground">
-                  Rua Guarani, 480-490-500 - Bairro Amorim
+                  {CONTACT.local.street}
                   <br />
-                  Minas Gerais - MG, 38446-132
+                  {CONTACT.local.state}, {CONTACT.local.zipCode}
                 </p>
               </div>
             </div>
