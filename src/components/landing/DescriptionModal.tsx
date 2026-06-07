@@ -16,74 +16,53 @@ const DescriptionModal = ({
   onClose,
   image,
 }: DescriptionModalProps) => {
-  if (!isOpen || !image) return null;
-
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
+      if (event.key === "Escape") onClose();
     };
 
     window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose]);
 
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [onClose]);
+  if (!isOpen || !image) return null;
 
   return (
-    // <div className=" fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-    //   <div className="bg-background w-[90%] max-w-3xl max-h-[85vh] rounded-2xl shadow-xl relative animate-in fade-in zoom-in-95 duration-200 flex flex-col">
-    //     {/* Botão fechar */}
-    //     <button
-    //       onClick={onClose}
-    //       className="absolute top-5 right-5 p-2 rounded-full bg-muted/40 hover:bg-muted transition-colors"
-    //     >
-    //       <X size={18} />
-    //     </button>
-    //     {/* Header FIXO */}
-    //     <div className="p-6 pb-4">
-    //       <img
-    //         src={image.src}
-    //         alt={image.label}
-    //         className="w-full h-56 object-cover rounded-lg mb-4"
-    //       />
-
-    //       <h3 className="text-2xl font-bold">{image.label}</h3>
-    //     </div>
-
-    //     {/* Descrição com SCROLL */}
-    //     <div className="px-6 pb-6 overflow-y-auto">
-    //       <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-    //         {image.description}
-    //       </p>
-    //     </div>
-    //   </div>
-    // </div>
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-      <div className="bg-background w-full max-w-3xl max-h-[90vh] rounded-2xl shadow-2xl animate-in fade-in zoom-in-95 duration-200 flex flex-col overflow-hidden">
-        <div className="flex items-center justify-between px-6 py-4 border-b">
-          <h3 className="text-2xl font-bold">{image.label}</h3>
-
-          <button
-            onClick={onClose}
-            className="p-2 rounded-full hover:bg-muted transition-colors"
-          >
-            <X size={20} />
-          </button>
-        </div>
-
-        <div className="w-full bg-muted">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm animate-in fade-in duration-200"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-background shadow-2xl ring-1 ring-border animate-in fade-in zoom-in-95 duration-200"
+      >
+        {/* Imagem com título sobreposto */}
+        <div className="relative bg-muted">
           <img
             src={image.src}
             alt={image.label}
-            className="w-full max-h-[350px] object-contain mx-auto"
+            className="mx-auto max-h-[360px] w-full object-cover"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+
+          <button
+            onClick={onClose}
+            aria-label="Fechar"
+            className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md transition-colors hover:bg-black/60"
+          >
+            <X size={18} />
+          </button>
+
+          <h3 className="absolute bottom-4 left-6 text-2xl font-bold text-white drop-shadow-sm">
+            {image.label}
+          </h3>
         </div>
 
-        <div className="px-6 py-6 overflow-y-auto">
-          <p className="text-muted-foreground text-base leading-7 tracking-wide text-justify">
+        {/* Descrição */}
+        <div className="overflow-y-auto px-6 py-6">
+          <p className="whitespace-pre-line text-base leading-7 tracking-wide text-muted-foreground">
             {image.description}
           </p>
         </div>
