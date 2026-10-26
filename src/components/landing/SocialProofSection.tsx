@@ -1,4 +1,5 @@
 import { Star, Quote } from "lucide-react";
+import { CountUp, Reveal, RevealGroup, RevealItem } from "./motion";
 
 //Futuramente ira pegar os dados do google maps.
 
@@ -32,50 +33,55 @@ const SocialProofSection = () => {
     <section id="depoimentos" className="section-padding bg-background">
       <div className="container-custom">
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+        <RevealGroup className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
           {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="text-center p-6 rounded-xl bg-secondary text-secondary-foreground"
-            >
-              <span className="text-4xl md:text-5xl font-bold block mb-1">
-                {stat.value}
-              </span>
-              <span className="text-sm text-secondary-foreground/80">
-                {stat.label}
-              </span>
-            </div>
+            <RevealItem key={stat.label}>
+              <div className="relative h-full overflow-hidden text-center p-6 rounded-xl bg-secondary-gradient text-secondary-foreground shadow-lg shadow-secondary/20 transition-transform duration-300 hover:-translate-y-1">
+                {/* reflexo frio no canto */}
+                <span className="pointer-events-none absolute -top-10 -right-10 h-24 w-24 rounded-full bg-ice/20 blur-2xl" />
+                <span className="relative text-4xl md:text-5xl font-bold block mb-1 tabular-nums">
+                  <CountUp value={stat.value} />
+                </span>
+                <span className="relative text-sm text-secondary-foreground/80">
+                  {stat.label}
+                </span>
+              </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
 
         {/* Testimonials */}
-        <div className="text-center mb-12">
+        <Reveal className="text-center mb-12">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">
             Prova Social
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
             O Que Nossos Clientes Dizem
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <RevealGroup className="grid md:grid-cols-3 gap-6" interval={0.15}>
           {testimonials.map((t) => (
-            <div
-              key={t.name}
-              className="bg-card rounded-xl p-8 border border-border card-hover"
-            >
-              <Quote className="h-8 w-8 text-primary/30 mb-4" />
-              <p className="text-foreground leading-relaxed mb-6">"{t.text}"</p>
-              <div className="flex items-center gap-1 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-                ))}
+            <RevealItem key={t.name}>
+              <div className="group h-full bg-card rounded-xl p-8 border border-border card-hover card-ice">
+                <Quote className="h-8 w-8 text-primary/30 mb-4 transition-all duration-300 group-hover:text-primary/60 group-hover:scale-110" />
+                <p className="text-foreground leading-relaxed mb-6">
+                  "{t.text}"
+                </p>
+                <div className="flex items-center gap-1 mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-4 w-4 fill-primary text-primary"
+                    />
+                  ))}
+                </div>
+                <p className="font-bold text-foreground">{t.name}</p>
+                <p className="text-sm text-muted-foreground">{t.role}</p>
               </div>
-              <p className="font-bold text-foreground">{t.name}</p>
-              <p className="text-sm text-muted-foreground">{t.role}</p>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

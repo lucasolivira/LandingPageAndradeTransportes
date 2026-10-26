@@ -6,6 +6,7 @@ import teamImg from "@/assets/team.jpg";
 import tempImg from "@/assets/temperature-control.jpg";
 import Dhiosney from "@/assets/dhiosney.jpeg";
 import DescriptionModal from "./DescriptionModal";
+import { Reveal } from "./motion";
 
 const images = [
   {
@@ -54,9 +55,9 @@ const GallerySection = () => {
 
   // estados do modal
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<(typeof images)[number] | null>(
-    null
-  );
+  const [selectedImage, setSelectedImage] = useState<
+    (typeof images)[number] | null
+  >(null);
 
   const isPaused = useRef(false);
   // trava: ignora novos comandos enquanto uma transição está em andamento,
@@ -70,7 +71,7 @@ const GallerySection = () => {
       ...images,
       ...images.slice(0, slidesToShow),
     ],
-    [slidesToShow]
+    [slidesToShow],
   );
 
   // responsividade: recalcula quantos slides aparecem
@@ -154,7 +155,7 @@ const GallerySection = () => {
 
   // índice real (0..images.length-1) para os indicadores
   const activeDot =
-    ((currentIndex - slidesToShow) % images.length + images.length) %
+    (((currentIndex - slidesToShow) % images.length) + images.length) %
     images.length;
 
   const goToSlide = (index: number) => {
@@ -168,7 +169,7 @@ const GallerySection = () => {
   return (
     <section id="galeria" className="section-padding bg-background">
       <div className="container-custom">
-        <div className="text-center mb-12 md:mb-16">
+        <Reveal className="text-center mb-12 md:mb-16">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">
             Conheça a Andrade
           </span>
@@ -179,81 +180,83 @@ const GallerySection = () => {
             Clique em qualquer imagem para conhecer mais sobre cada parte da
             nossa estrutura e da nossa equipe.
           </p>
-        </div>
+        </Reveal>
 
-        <div
-          className="relative"
-          onMouseEnter={() => (isPaused.current = true)}
-          onMouseLeave={() => (isPaused.current = false)}
-        >
-          <div className="overflow-hidden rounded-2xl">
-            <div
-              className="flex"
-              onTransitionEnd={handleTransitionEnd}
-              style={{
-                transform: `translateX(-${currentIndex * (100 / slidesToShow)}%)`,
-                transition: isTransitioning
-                  ? "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)"
-                  : "none",
-              }}
-            >
-              {extendedImages.map((img, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 p-2 md:p-3"
-                  style={{ width: `${100 / slidesToShow}%` }}
-                >
-                  <button
-                    type="button"
-                    onClick={() => handleOpenModal(img)}
-                    className="group relative block w-full overflow-hidden rounded-2xl border border-border bg-card text-left shadow-[var(--card-shadow)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--card-shadow-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        <Reveal delay={0.1}>
+          <div
+            className="relative"
+            onMouseEnter={() => (isPaused.current = true)}
+            onMouseLeave={() => (isPaused.current = false)}
+          >
+            <div className="overflow-hidden rounded-2xl">
+              <div
+                className="flex"
+                onTransitionEnd={handleTransitionEnd}
+                style={{
+                  transform: `translateX(-${currentIndex * (100 / slidesToShow)}%)`,
+                  transition: isTransitioning
+                    ? "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)"
+                    : "none",
+                }}
+              >
+                {extendedImages.map((img, index) => (
+                  <div
+                    key={index}
+                    className="flex-shrink-0 p-2 md:p-3"
+                    style={{ width: `${100 / slidesToShow}%` }}
                   >
-                    <div className="relative h-[280px] md:h-[320px] overflow-hidden">
-                      <img
-                        src={img.src}
-                        alt={img.alt}
-                        loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                      />
-                      {/* gradiente para legibilidade */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent transition-opacity duration-300 group-hover:from-black/85" />
+                    <button
+                      type="button"
+                      onClick={() => handleOpenModal(img)}
+                      className="group relative block w-full overflow-hidden rounded-2xl border border-border bg-card text-left shadow-[var(--card-shadow)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--card-shadow-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    >
+                      <div className="relative h-[280px] md:h-[320px] overflow-hidden">
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                        />
+                        {/* gradiente para legibilidade */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent transition-opacity duration-300 group-hover:from-black/85" />
 
-                      {/* label + chamada */}
-                      <div className="absolute inset-x-0 bottom-0 p-5">
-                        <h3 className="text-lg font-bold text-white drop-shadow-sm">
-                          {img.label}
-                        </h3>
-                        <span className="mt-1 inline-flex items-center gap-1 text-sm font-medium text-white/80 opacity-0 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                          Ver detalhes
-                          <ChevronRight className="h-4 w-4" />
-                        </span>
+                        {/* label + chamada */}
+                        <div className="absolute inset-x-0 bottom-0 p-5">
+                          <h3 className="text-lg font-bold text-white drop-shadow-sm">
+                            {img.label}
+                          </h3>
+                          <span className="mt-1 inline-flex items-center gap-1 text-sm font-medium text-white/80 opacity-0 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                            Ver detalhes
+                            <ChevronRight className="h-4 w-4" />
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </button>
-                </div>
-              ))}
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
+
+            {/* botões de navegação */}
+            <button
+              type="button"
+              onClick={prevSlide}
+              aria-label="Slide anterior"
+              className="absolute left-1 md:-left-5 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-background/90 text-foreground shadow-lg ring-1 ring-border backdrop-blur transition-all hover:bg-primary hover:text-primary-foreground hover:scale-105"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+
+            <button
+              type="button"
+              onClick={nextSlide}
+              aria-label="Próximo slide"
+              className="absolute right-1 md:-right-5 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-background/90 text-foreground shadow-lg ring-1 ring-border backdrop-blur transition-all hover:bg-primary hover:text-primary-foreground hover:scale-105"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
           </div>
-
-          {/* botões de navegação */}
-          <button
-            type="button"
-            onClick={prevSlide}
-            aria-label="Slide anterior"
-            className="absolute left-1 md:-left-5 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-background/90 text-foreground shadow-lg ring-1 ring-border backdrop-blur transition-all hover:bg-primary hover:text-primary-foreground hover:scale-105"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-
-          <button
-            type="button"
-            onClick={nextSlide}
-            aria-label="Próximo slide"
-            className="absolute right-1 md:-right-5 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-background/90 text-foreground shadow-lg ring-1 ring-border backdrop-blur transition-all hover:bg-primary hover:text-primary-foreground hover:scale-105"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-        </div>
+        </Reveal>
 
         {/* indicadores */}
         <div className="mt-8 flex items-center justify-center gap-2">
